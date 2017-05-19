@@ -1,4 +1,4 @@
-# An example wrapper class to show
+# An example wrapper class to show how to handle variable entries
 class abrader::sysctl (
   Array[Abrader::Sysctl] $sysctls,
 ) {
