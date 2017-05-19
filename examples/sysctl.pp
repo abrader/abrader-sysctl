@@ -1,3 +1,13 @@
 class { 'abrader::sysctl' :
-  sysctl => [['net.ipv4.ip_forward', '1', '/etc/sysctl.d/forwarding.conf', 'Enable IP Forwarding', true, false]],
+  sysctls => [
+    {
+      ensure  => 'present',
+      entry   => 'net.ipv4.ip_forward',
+      value   => '0',
+      #target  => '/etc/sysctl.d/forwarding.conf',
+      comment => 'Enable IP Forwarding',
+      #apply   => true,
+      #silent  => false,
+    }
+  ],
 }
