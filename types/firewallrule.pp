@@ -1,6 +1,6 @@
 type Abrader::FirewallRule = Struct[
   {
-    ensure                          => Enum['present', 'absent'],
+    #ensure                          => Enum['present', 'absent'],
     name                            => String,
     Optional[action]                => String,
     Optional[source]                => String,
@@ -22,7 +22,7 @@ type Abrader::FirewallRule = Struct[
       'PROHIBIT',
       'THROW',
       'NAT',
-      'XRESOLVE'
+      'XRESOLVE',
     ],
     Optional[src_type]              => Enum[
       'UNSPEC',
@@ -36,7 +36,7 @@ type Abrader::FirewallRule = Struct[
       'PROHIBIT',
       'THROW',
       'NAT',
-      'XRESOLVE'
+      'XRESOLVE',
     ],
     Optional[proto]                 => Enum[
       'ip',
@@ -56,7 +56,7 @@ type Abrader::FirewallRule = Struct[
       'cbt',
       'sctp',
       'pim',
-      'all'
+      'all',
     ],
     Optional[mss]                   => String,
     Optional[tcp_flags]             => Array[Abrader::TcpFlags],
@@ -65,14 +65,14 @@ type Abrader::FirewallRule = Struct[
       'FORWARD',
       'OUTPUT',
       'PREROUTING',
-      'POSTROUTING'
-    ]
+      'POSTROUTING',
+    ],
     Optional[table]                 => Enum[
       'nat',
       'mangle',
       'filter',
       'raw',
-      'rawpost'
+      'rawpost',
     ],
     Optional[jump]                  => Enum[
       'QUEUE',
@@ -83,7 +83,7 @@ type Abrader::FirewallRule = Struct[
       'NFLOG',
       'MASQUERADE',
       'REDIRECT',
-      'MARK'
+      'MARK',
     ],
     Optional[goto]                  => Enum[
       'QUEUE',
@@ -93,7 +93,7 @@ type Abrader::FirewallRule = Struct[
       'LOG',
       'MASQUERADE',
       'REDIRECT',
-      'MARK'
+      'MARK',
     ],
     Optional[iniface]               => String,
     Optional[outiface]              => String,
@@ -110,18 +110,18 @@ type Abrader::FirewallRule = Struct[
     Optional[nflog_prefix]          => String,
     Optional[nflog_range]           => String,
     Optional[nflog_threshold]       => Integer,
-    Optional[icmp]                  => Optional[String,Array[String]],
-    Optional[state]                 => Enum[
+    Optional[icmp]                  => Variant[String, Array[String]],
+    Optional[state]                 => Array[Enum[
       'INVALID',
       'ESTABLISHED',
       'NEW',
-      'RELATED'
-    ],
+      'RELATED',
+    ]],
     Optional[ctstate]               => Enum[
       'INVALID',
       'ESTABLISHED',
       'NEW',
-      'RELATED'
+      'RELATED',
     ],
     Optional[conmark]               => String,
     Optional[connlimit_above]       => Integer,
@@ -155,20 +155,20 @@ type Abrader::FirewallRule = Struct[
       'cs5',
       'cs6',
       'cs7',
-      'ef'
+      'ef',
     ],
     Optional[set_mss]               => String,
     Optional[pkttype]               => Enum[
       'unicast',
       'broadcast',
-      'multicast'
+      'multicast',
     ],
     Optional[isfragment]            => Boolean,
     Optional[recent]                => Enum[
       'set',
       'update',
       'rcheck',
-      'remove'
+      'remove',
     ],
     Optional[rdest]                 => Boolean,
     Optional[rsource]               => Boolean,
@@ -183,22 +183,22 @@ type Abrader::FirewallRule = Struct[
     Optional[isfirstfrag]           => Boolean,
     Optional[ipsec_policy]          => Enum[
       'none',
-      'ipsec'
+      'ipsec',
     ],
     Optional[ipsec_dir]             => Enum[
       'in',
-      'out'
+      'out',
     ],
     Optional[state_mode]            => Enum[
       'nth',
-      'random'
+      'random',
     ],
     Optional[stat_every]            => Integer,
     Optional[stat_packet]           => Integer,
     Optional[stat_probability]      => Integer,
     Optional[mask]                  => String,
     Optional[gateway]               => String,
-    Optional[ipset]                 => Optional[String, Array[String]],
+    Optional[ipset]                 => Variant[String, Array[String]],
     Optional[checksum_fill]         => Boolean,
     Optional[mac_source]            => String,
     Optional[physdev_in]            => String,
@@ -218,7 +218,7 @@ type Abrader::FirewallRule = Struct[
       'Thu',
       'Fri',
       'Sat',
-      'Sun'
+      'Sun',
     ],
     Optional[time_contiguous]       => Boolean,
     Optional[kernel_timezone]       => Boolean,
@@ -226,7 +226,7 @@ type Abrader::FirewallRule = Struct[
     Optional[clusterip_hashmode]    => Enum[
       'sourceip',
       'sourceip-sourceport',
-      'sourceip-sourceport-destport'
+      'sourceip-sourceport-destport',
     ],
     Optional[clusterip_clustermac]  => String,
     Optional[clusterip_total_nodes] => Integer,
@@ -236,7 +236,7 @@ type Abrader::FirewallRule = Struct[
     Optional[string]                => String,
     Optional[string_algo]           => Enum[
       'bm',
-      'kmp'
+      'kmp',
     ],
     Optional[string_from]           => String,
     Optional[string_to]             => String,
@@ -244,6 +244,6 @@ type Abrader::FirewallRule = Struct[
     Optional[queue_bypass]          => Boolean,
     Optional[src_cc]                => String,
     Optional[dst_cc]                => String,
-    Optional[firewallchain]         => String,
+    Optional[firewallchain]         => String
   }
 ]
