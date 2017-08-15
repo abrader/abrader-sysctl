@@ -3,6 +3,19 @@ class abrader::firewall (
   Array[Abrader::FirewallRule] $firewall_rules,
 ) {
 
+  # Firewall {
+  #   before  => Class['my_fw::post'],
+  #   require => Class['my_fw::pre'],
+  # }
+  #
+  # class { ['my_fw::pre', 'my_fw::post'] : }
+
+  resources { 'firewall':
+    purge => true,
+  }
+
+  class{ 'firewall' : }
+
   $firewall_rules.each |Hash $firewall_rule| {
     firewall { $firewall_rule['name'] :
       #ensure   => $firewall_rule['ensure'],

@@ -1,7 +1,7 @@
 class { 'abrader::firewall' :
   firewall_rules => [
     {
-      name   => '000 accept all icmp',
+      name   => '000 accept all icmp requests',
       proto  => 'icmp',
       action => 'accept'
     },

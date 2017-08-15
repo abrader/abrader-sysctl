@@ -2,7 +2,11 @@ type Abrader::FirewallRule = Struct[
   {
     #ensure                          => Enum['present', 'absent'],
     name                            => String,
-    Optional[action]                => String,
+    Optional[action]                => Enum[
+      'accept',
+      'reject',
+      'drop',
+    ],
     Optional[source]                => String,
     Optional[src_range]             => String,
     Optional[destination]           => String,
